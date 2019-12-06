@@ -1,0 +1,11 @@
+Determining if the C compiler works failed with the following output:
+Change Dir: G:/My Drive/bst_integration/bst_duneuro_toolbox/duneuro_cpp_source/src/out/build/x64-Debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_3a925 
+[1/2] Building C object CMakeFiles\cmTC_3a925.dir\testCCompiler.c.obj
+FAILED: CMakeFiles/cmTC_3a925.dir/testCCompiler.c.obj 
+C:\PROGRA~2\MICROS~1\2019\COMMUN~1\VC\Tools\MSVC\1421~1.277\bin\HostX64\x64\cl.exe  /nologo   /DWIN32 /D_WINDOWS /W3  /MDd /ZI /Ob0 /Od /RTC1 /JMC /showIncludes /FoCMakeFiles\cmTC_3a925.dir\testCCompiler.c.obj /FdCMakeFiles\cmTC_3a925.dir\ /FS -c testCCompiler.c
+G:\My Drive\bst_integration\bst_duneuro_toolbox\duneuro_cpp_source\src\out\build\x64-Debug\CMakeFiles\CMakeTmp\testCCompiler.c(12): error C2471: cannot update program database 'G:\My Drive\bst_integration\bst_duneuro_toolbox\duneuro_cpp_source\src\out\build\x64-Debug\CMakeFiles\CMakeTmp\CMakeFiles\cmTC_3a925.dir\vc140.idb'
+ninja: build stopped: subcommand failed.
+
+

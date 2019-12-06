@@ -1,0 +1,10 @@
+- Add the bst header to all the files 
+  and a help or quick discription 
+- Adapt the mini file according to the modality eeg, meg, ....
+- Use only the duneuro-bst binaries 
+- test the process on the linux machine
+- test MEG
+- add plot of the electric field
+- upload this toolbox to github
+- recompile the duneuro cpp with the release opts
+- parrallelisation of the computation 
