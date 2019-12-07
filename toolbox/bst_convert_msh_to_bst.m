@@ -1,6 +1,6 @@
 function femhead = bst_convert_msh_to_bst(mshfilename)
 % read, display and save to the bst matlab format
-m = mesh_load_gmsh4(  mshfilename );
+m = mesh_load_gmsh4(mshfilename);
 
 % volume mesh
 femhead.Comment = mshfilename;

@@ -29,6 +29,17 @@ end
 bst_plot_mesh_advanced(cfg)
 bst_plot_mesh_basic(cfg)
 
+opts.crossPlanName = 'XY'; % string:
+opts.crossPlanValue = 0.01;
+cfg = bst_display_Mesh2TissuContour(cfg,opts);
+
+
+opts.axialValue = 0.1;
+opts.coronalValue =  0.1;
+opts.saggitalValue =  0.1;
+cfg = bst_display_MeshContourViewer(cfg,opts);
+
+
 %% 2- Load the source
 cfg = bst_generate_dipole_in_sphere(cfg);
 bst_display_source_space(cfg)

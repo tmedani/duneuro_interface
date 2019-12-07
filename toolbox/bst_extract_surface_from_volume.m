@@ -30,6 +30,12 @@ cfg.tissuID = unique(cfg.elem(:,5));
 
 %% extract surface from volume mesh :
 
+if ~isfield(cfg,'TissueLabels')
+    for ind = 1 :  cfg.numberOfLayer
+        cfg.TissueLabels{ind} = ['tissu_' num2str(ind)] ;
+    end
+end
+
 for ind = 1 :  cfg.numberOfLayer
     % The labeling should be from the inner to the outer
     % extract the tissuID(1)
