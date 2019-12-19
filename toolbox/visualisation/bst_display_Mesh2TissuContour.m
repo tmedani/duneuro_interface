@@ -56,7 +56,7 @@ Pof = cell(tissues, 1);   %   intersection nodes for a tissue
 Eof = cell(tissues, 1);   %   edges formed by intersection nodes for a tissue
 Tof = cell(tissues, 1);   %   intersected triangles
 count = [];     % number of every tissue present in the slice
-
+isSlice = [] ; % if there is a slice at the specified plan
 unitConversion =1; 
 for m = 1:tissues
     [P, t] = fixmesh( cfg.bemNode{m}, cfg.bemFace{m});
@@ -71,14 +71,19 @@ for m = 1:tissues
         inslice             = length(count); %  total number of tissues present in the slice
          Pof{inslice}      = Pi;           %   intersection nodes
          Eof{inslice}      = polymask;     %   edges formed by intersection nodes
-         Tof{inslice}      = ti;           %   edges formed by intersection nodes
+         Tof{inslice}      = ti;           %   edges formed by intersection nodes         
     end
+    isSlice = [isSlice; flag];
 end
 
 % Display the result
+
+if sum(isSlice > 0)
 %figure;
 plot_mesh_contour(count,inslice,Pof,Eof,coor_index,cuttingAxe,cfg,opts)
-
+else
+    error('There is no surface to plot at this level, please change the cutting plan value')
+end
 end
 
 function plot_mesh_contour(count,inslice,Pof,Eof,coor_index,cuttingAxe,cfg,opts)
@@ -103,7 +108,7 @@ colorbar %// show color bar
 l = colorbar('Ticks', ticks, 'TickLabels', mytickmap);
 set(l, 'TickLabelInterpreter', 'none')
 title(strcat(upper(opts.crossPlanName(1)), opts.crossPlanName(2:end) ...
-    ,' cross-section at',' ', cuttingAxe, ' ','=',' ', num2str( opts.crossPlanValue)));
+    ,' cross-section at  "', cuttingAxe,' = ',num2str( opts.crossPlanValue), ' "'));
 if cuttingAxe == 'z'; xlabel('x'); ylabel('y');end
 if cuttingAxe == 'y'; xlabel('x'); ylabel('z');end
 if cuttingAxe == 'x'; xlabel('x'); ylabel('z');end

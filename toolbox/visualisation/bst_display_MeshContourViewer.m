@@ -1,11 +1,11 @@
 function cfg = bst_display_MeshContourViewer(cfg,opts)
 
 
-
-opts.axialValue = 0.1;
-opts.coronalValue =  0.1;
-opts.saggitalValue =  0.1;
-cfg = bst_display_MeshContourViewer(cfg,opts);
+% 
+% opts.axialValue = 0.1;
+% opts.coronalValue =  0.1;
+% opts.saggitalValue =  0.1;
+% cfg = bst_display_MeshContourViewer(cfg,opts);
 
 figure;
 subplot(2,2,1)

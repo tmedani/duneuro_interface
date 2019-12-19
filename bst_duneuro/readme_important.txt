@@ -1,0 +1,1 @@
+This folder is part of the duneuro interface and also a submodule of the bst_duneuro within the brainstorm git repo.

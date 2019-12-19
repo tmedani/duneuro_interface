@@ -1,0 +1,12 @@
+*.asv
+*.msh
+*.mat
+*.nii
+*.nii*
+*.hdm
+*.mri
+*.shape
+*.ds
+*/tmp
+tmp/*
+inProgress/*

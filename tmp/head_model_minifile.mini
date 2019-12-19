@@ -1,4 +1,4 @@
-__name = bst_eeg
+__name = duneuro_minifile.mini
 type = fitted
 solver_type = cg
 element_type  =tetrahedron
@@ -20,7 +20,7 @@ cg_smoother_type  = ssor
 intorderadd  = 0
 [solution]
 post_process  = true
-subtract_mean  = true
+subtract_mean  = false
 [solution.solver]
 reduction  = 1.000000e-10
 [solution.source_model]
@@ -39,11 +39,11 @@ radii =	1 	2 	3 	4
 center =	0 	0 	0 	
 conductivities =	1 	1.250000e-02 	1 	1 	
 [output]
-filename  = out_eeg_forward_{solver_type}_{element_type}_{solution.source_model.type}
-extension  = txt
+filename  = ns
+extension  = ns
 [wrapper.outputtreecompare]
-name  = {output.filename}
-extension  = {output.extension}
-reference  = ref_{output.filename}
-type  = fuzzy
+name  = ns
+extension  = ns
+reference  = ns
+type  = ns
 absolute  = 1.000000e-02

@@ -7,4 +7,23 @@
 - add plot of the electric field
 - upload this toolbox to github
 - recompile the duneuro cpp with the release opts
-- parrallelisation of the computation 
+- parrallelisation of the computation // use multi thread
+
+- segmentqtion with fieltrip pipline ==> interessant et rapide
+- MEG computation
+
+- generate hexa mesh
+- write the hexa files for duneruo 
+- display hexa mesh
+
+- which model is better ... tetra or hexamodel
+
+- Mix between the roast segmentation and johannes hexamesh generator
+- conert tetrq to hexa et visversa
+-add header and help for all functions
+
+- Check the MEG with and witout outer layers.
+
+- Oprimisation ... writer functions = : dipoles, electrodes, coils , orijections could be combined in one function
+
+- there is probably an error on the way to export the lf_meg ... check with Juan- work on the EEG/MEG combined method is the head is not all considered.
