@@ -1,5 +1,7 @@
 %% ------------- DO NOT MOVE OR REMOVE THIS FILE ----------------------%%
  
+outdated....
+
 Content :
 bin : folder that contains the binary of duneuro
 data_conversion : folder that contains the matlab function to convert the data (mainly the mesh format)
