@@ -13,3 +13,8 @@ tmp\*
 \tmp\*
 inProgress/*
 paper/*
+*/paper
+paper/*
+paper\*
+\paper\*
+/paper/*
