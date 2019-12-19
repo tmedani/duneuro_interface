@@ -9,4 +9,6 @@
 *.ds
 */tmp
 tmp/*
+tmp\*
+\tmp\*
 inProgress/*
