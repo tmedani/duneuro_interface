@@ -19,7 +19,7 @@ cfg.loadModel = 0;
 cfg.sphereModel = 1;
 if cfg.sphereModel == 1
     disp('Loading of the matlab Model from hard disc')
-    load(fullfile(cfg.pathOfDuneuroToolbox,'data','duneuro_model.mat'));
+    load(fullfile('G:\My Drive\bst_integration\duneuro_interface_data\data','duneuro_model.mat'));
     disp('Loading of the matlab Model from hard disc ... done')
     % else
     %      cfg = bst_generate_sphere_fem_model(cfg)

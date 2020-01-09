@@ -30,7 +30,7 @@ mri = ft_read_mri(mrifilename);
 
 % Reslice the volume
 cfg     = [];
-cfg.dim = [255 255 255];%mri.dim;
+% cfg.dim = [255 255 255];%mri.dim;
 % cfg.resolution = voxsize
 mri     = ft_volumereslice(cfg,mri);
 

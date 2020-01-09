@@ -4,7 +4,7 @@ function varargout = bst_generate_volume_head_model(varargin)
 % This function is used to generate (& save if specified) a volume mesh from surface mesh.
 % This version v1 support these arguments :
 % if varargin coud be a string or a matlab structure.
-% if varargin is a string, thhis should be the name of the brainstorm anatomy path
+% if varargin is a string, this should be the name of the brainstorm anatomy path
 % if varargin is a structure with the folowing fields :
 % Mandatory parameters:
 % cfg.anatomyPath : the path to anatomy folder. This folder should contains the brainstorm surface files.
@@ -214,7 +214,7 @@ if length(elemID) ~= cfg.numberOfLayer
         'You need to check the mesh generation process']...
         , length(elemID),cfg.numberOfLayer);
 end
-% set the ID and plot the mesh is the option is ctivated
+% set the ID and plot the mesh is the option is activated
 if cfg.plotModel == 1;  hv = figure; end
 for ind = 1 : length(elemID)
     if cfg.plotModel == 1

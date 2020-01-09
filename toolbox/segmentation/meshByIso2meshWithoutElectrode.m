@@ -77,7 +77,7 @@ if z
 end
 %% Do some processing funcion
 % sliceshow(allMask,[],[],[],'Tissue index','Segmentation. Click anywhere to navigate.'); drawnow
-%sliceshow(allMask,[],'gray',[],[],'MRI: Click anywhere to navigate.'); drawnow
+% sliceshow(allMask,[],'gray',[],[],'MRI: Click anywhere to navigate.'); drawnow
 %  http://iso2mesh.sourceforge.net/cgi-bin/index.cgi?Doc/FunctionList#Mesh_decomposition_and_query
 %  vol=smoothbinvol(allMask,10);
 %  allMask = uint8(vol) ;

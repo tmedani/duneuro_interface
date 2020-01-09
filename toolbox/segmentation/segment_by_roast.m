@@ -11,10 +11,11 @@ function segment_by_roast(fullPathToT1,fullPathToT2)
 %% Lookfor the roast toolbox and add it to the path
 %  find the bst_duneuro_toolbox path
 str = which('roast','-all'); % 
+if ~isempty(str)
 [filepath,~,~] = fileparts(str{1});    
 % add to the path
 addpath(genpath(filepath));
-
+end
 % read the input 
 subjRSPD = fullPathToT1;
 % you can either add a T2 image in order to improve the mesh

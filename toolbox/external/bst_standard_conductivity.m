@@ -82,10 +82,11 @@ if ~isfield(cfg,'conductivity')
                 error('error on your model')
         end
     end
-end
-
 cfg.conductivity = conductivity;
 cfg.TissuLabels = tissu;
+end
+
+
 
 if cfg.isotropic == 1
     cfg.conductivity_radial = cfg.conductivity ;

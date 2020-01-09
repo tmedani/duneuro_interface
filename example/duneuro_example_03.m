@@ -45,13 +45,13 @@ cfg.conductivity = model.conductivity;
 
 cfg.useTensor = 1;
 cfg.isotropic = 0;
-cfg.conductivity_radial = [1 1.5 1];
-cfg.conductivity_tangential = [1 0.5 0.5];
+cfg.conductivity_radial = [1 1 1];
+cfg.conductivity_tangential = [0.05 0.05 0.05];
 
 cfg = bst_define_conductivity_tensor(cfg);
 
 
-cfg.indElem = 1 : 1000;
+cfg.indElem = 1 : 1;
 bst_display_tensor_as_ellipse(cfg)
 
 bst_display_tensor_as_vector(cfg)
