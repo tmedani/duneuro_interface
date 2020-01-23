@@ -115,20 +115,23 @@ dip_ori = [ori_source_x, ori_source_y, ori_source_z] ;
 
 figure('color',[1 1 1]);
 plotmesh(nodes_br,brain_surface_facets,'FaceColor',cortex_clr,'facealpha',0.2,'edgecolor','none');
-% legend('nodes','sources')
 %% Ajouter les vecteurs
+viz_data = 100:300;
 if opts.under_node_or_face == 1 % 1 for node and 0 for facette
-    hold on; quiver3(dip_pos(:,1),dip_pos(:,2),dip_pos(:,3),...
-        nrm_sur_nodes(:,1),nrm_sur_nodes(:,2),nrm_sur_nodes(:,3),1,'color','r');
-    hold on; plotmesh(nodes_br,'k.')
-    hold on;plotmesh(dip_pos,'bo');
+    hold on; quiver3(dip_pos(viz_data,1),dip_pos(viz_data,2),dip_pos(viz_data,3),...
+        nrm_sur_nodes(viz_data,1),nrm_sur_nodes(viz_data,2),nrm_sur_nodes(viz_data,3),0.1,'color','r');
+    hold on; plotmesh(nodes_br(viz_data,:),'k.')
+    hold on;plotmesh(dip_pos(viz_data,:),'bo');
 else
-    hold on; quiver3(dip_pos(:,1),dip_pos(:,2),dip_pos(:,3),...
-        nrm_sur_facette(:,1),nrm_sur_facette(:,2),nrm_sur_facette(:,3),1,'color','r');
-    hold on; plotmesh(brain_face_centroide,'k.')
-    hold on;plotmesh(dip_pos,'bo');
+    hold on; quiver3(dip_pos(viz_data,1),dip_pos(viz_data,2),dip_pos(viz_data,3),...
+        nrm_sur_facette(viz_data,1),nrm_sur_facette(viz_data,2),nrm_sur_facette(viz_data,3),0.1,'color','r');
+    hold on; plotmesh(brain_face_centroide(viz_data,:),'k.')
+    hold on;plotmesh(dip_pos(viz_data,:),'bo');
 end
+hold on
+plotmesh(nodes_br, brain_surface_facets, 'facecolor','g','facealpha',0.3)
 title(figure_title)
+% legend('nodes','sources')
 
 %% Save the source space
 Comment = ['cortex_' num2str(length(dip_pos))];

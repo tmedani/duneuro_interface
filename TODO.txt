@@ -5,7 +5,7 @@
 - test the process on the linux machine
 - test MEG
 - add plot of the electric field
-- upload this toolbox to github
+
 - recompile the duneuro cpp with the release opts
 - parrallelisation of the computation // use multi thread
 
@@ -17,6 +17,8 @@
 - display hexa mesh
 
 - which model is better ... tetra or hexamodel
+
+add function to bst FEM model to extract the FEM mesh surfaces
 
 - Mix between the roast segmentation and johannes hexamesh generator
 - conert tetrq to hexa et visversa
