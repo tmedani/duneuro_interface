@@ -117,7 +117,7 @@ if isCheck  ==   1
 figure('color',[1 1 1]);
 plotmesh(nodes_br,brain_surface_facets,'FaceColor',cortex_clr,'facealpha',0.2,'edgecolor','none');
 %% Ajouter les vecteurs
-viz_data  =  100:300;
+viz_data  =  100:600;
 if opts.under_node_or_face  ==   1 % 1 for node and 0 for facette
     hold on; quiver3(dip_pos(viz_data,1),dip_pos(viz_data,2),dip_pos(viz_data,3),...
         nrm_sur_nodes(viz_data,1),nrm_sur_nodes(viz_data,2),nrm_sur_nodes(viz_data,3),0.1,'color','r');
