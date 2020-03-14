@@ -72,7 +72,6 @@ LeadField = cell(length(LF),1);
 
 %% Plotting
 hold on
-
 for imodel = 1 : length(LF)
     switch ref_mode % {'avgref','ref'}
         case 'ref'

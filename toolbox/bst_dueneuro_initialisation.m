@@ -63,8 +63,8 @@ if exist(fullfile(cfg.pathOfTempOutPut,'tmp')) == 7
     answer = input('A folder named "temp" is already created, do you want to replace it ? [y or n] : ',  's' );
     if strcmp(answer,'y')
         mkdir(fullfile(cfg.pathOfTempOutPut,'tmp'));
-        copyfile(fullfile(cfg.pathOfDuneuroToolbox,'bin','*'),(fullfile(cfg.pathOfTempOutPut)),'f')
-        disp('Copying of the duneuro binaries to the temporary folder ...')
+%         copyfile(fullfile(cfg.pathOfDuneuroToolbox,'bin','*'),(fullfile(cfg.pathOfTempOutPut)),'f')
+%         disp('Copying of the duneuro binaries to the temporary folder ...')
         if cfg.writeLogFile ==1
             diary((fullfile(cfg.pathOfTempOutPut,cfg.logFileName)))
         end
@@ -75,8 +75,8 @@ if exist(fullfile(cfg.pathOfTempOutPut,'tmp')) == 7
     end
 else
     mkdir(fullfile(cfg.pathOfTempOutPut));
-    copyfile(fullfile(cfg.pathOfDuneuroToolbox,'bin','*'),(fullfile(cfg.pathOfTempOutPut)),'f')
-    disp('Copying of the duneuro binaries to the temporary folder ...')
+%     copyfile(fullfile(cfg.pathOfDuneuroToolbox,'bin','*'),(fullfile(cfg.pathOfTempOutPut)),'f')
+%     disp('Copying of the duneuro binaries to the temporary folder ...')
     if cfg.writeLogFile ==1
         diary((fullfile(cfg.pathOfTempOutPut,cfg.logFileName)))
     end

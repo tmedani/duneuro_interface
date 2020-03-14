@@ -1,0 +1,22 @@
+Load T1
+Load the DTI : [MRI, vox2ras] = in_mri(MriFile, FileFormat, isInteractive, isNormalize)
+
+Coregister DTI to T1 : mri_coregister ===> registrationOfModalities.m   line 21
+
+Save to outside the MRI and the DTI coregitred to T1 export_mri( BstMriFile, OutputMriFile )  check on it the function out_mri_nii
+
+Call the brainsuite pipline
+
+==> generates the eigen tensor data.
+
+read and convert the eigen vector to V1 V2 V3 and L1, L2 et L3 
+
+call the SimBio toolbox and the Tuch code to convert DTi the conductivity.
+
+assigne the condctivity to each element
+
+display the tensor as ellips on brainstorm/matlab
+
+https://openneuro.org/datasets/ds001771/versions/1.0.2
+
+

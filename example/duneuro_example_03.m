@@ -51,7 +51,7 @@ cfg.conductivity_tangential = [0.05 0.05 0.05];
 cfg = bst_define_conductivity_tensor(cfg);
 
 
-cfg.indElem = 1 : 1;
+cfg.indElem = 1 : 100;
 bst_display_tensor_as_ellipse(cfg)
 
 bst_display_tensor_as_vector(cfg)
