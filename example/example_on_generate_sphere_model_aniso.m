@@ -37,7 +37,7 @@ bst_display_eeg_hemlet(cfg)
 cfg.useTensor = 1;
 cfg  = bst_standard_conductivity(cfg);
 cfg = bst_define_conductivity_tensor(cfg);
-cfg.indElem = 1 : 100;
+cfg.indElem = 10 : 10;
 bst_display_tensor_as_ellipse(cfg)
 
 %% 5- Lead Field computation 

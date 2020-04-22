@@ -12,7 +12,6 @@
 tmp/*
 tmp\*
 \tmp\*
-inProgress/*
 paper/*
 */paper
 paper/*

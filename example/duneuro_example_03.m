@@ -12,7 +12,9 @@ cfg = bst_dueneuro_initialisation(cfg);
 %% 1 -Load the head model
 cfg.sphereModel = 1;
 if cfg.sphereModel == 1
-    load(fullfile(cfg.pathOfDuneuroToolbox,'data','duneuro_model.mat'));
+%     load(fullfile(cfg.pathOfDuneuroToolbox,'data','duneuro_model.mat'));
+    load(fullfile('G:\My Drive\bst_integration\duneuro_interface_data\data','duneuro_model.mat'));
+
 end
 cfg.node = model.volume.node;cfg.elem = model.volume.elem;
 cfg.tissu = model.tissus; cfg.tissuLabel = model.tissus_id;
@@ -46,12 +48,12 @@ cfg.conductivity = model.conductivity;
 cfg.useTensor = 1;
 cfg.isotropic = 0;
 cfg.conductivity_radial = [1 1 1];
-cfg.conductivity_tangential = [0.05 0.05 0.05];
+cfg.conductivity_tangential = [0.05 0.5 0.5];
 
 cfg = bst_define_conductivity_tensor(cfg);
 
 
-cfg.indElem = 1 : 100;
+cfg.indElem = 100 : 500;
 bst_display_tensor_as_ellipse(cfg)
 
 bst_display_tensor_as_vector(cfg)

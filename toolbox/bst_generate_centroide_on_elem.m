@@ -12,14 +12,26 @@ if 0
     elem_centroide = [ xmean' ymean' zmean']
 end
 
-if 1
+if 0
     tic
     elem_centroide = zeros(length(elem),3);
     for indEl = 1 : length(elem)
-        elem_centroide(indEl,:) = mean(node(elem(indEl,1:4),:));
+        elem_centroide(indEl,:) = mean(node(elem(indEl,1:8),:));
     end
     t2 = toc;
 end
+
+if 1
+    % calculate the centroid for each element
+    hex = elem(:,1:end-1);
+    centroids = zeros(size(hex, 1), 3);
+    tic;
+    for l = 1:3
+        elem_centroide(:, l) = sum(reshape(node(hex(:, :), l), size(hex, 1), size(hex, 2))')'/size(hex, 2);
+    end
+    t2 = toc;
+end
+
 
 if 0
 figure;plotmesh(node,elem,'x>0','facealpha',0.5);  hold on;plotmesh(elem_centroide,'x>0','r.')

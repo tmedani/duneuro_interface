@@ -1,8 +1,6 @@
 function cfg = bst_display_tensor_as_mainEigenVector(cfg)
 
 % compute eigen value and vector of a matrix
-
-
 % check this for more option in the future : http://web.mit.edu/8.13/matlab/MatlabTraining_IAP_2012/AGV/DemoFiles/ScriptFiles/html/Part8_VectorFields.html
 
 
@@ -33,6 +31,7 @@ V1xL1 = cfg.conductivity_eigenVectorScaledByValue(:,1,indElem); V1xL1 = squeeze(
 V2xL2 = cfg.conductivity_eigenVectorScaledByValue(:,2,indElem); V2xL2 = squeeze(V2xL2);
 V3xL3 = cfg.conductivity_eigenVectorScaledByValue(:,3,indElem); V3xL3 = squeeze(V3xL3);
 VxL = {V1xL1;V2xL2;V3xL3};
+
 % Get the maximum values and main direction
 [~, mainDirection] = max([L1';L2';L3']);
 
@@ -45,7 +44,22 @@ quiver3(x,y,z,VmainDirectionScalled(1,:)',VmainDirectionScalled(2,:)',VmainDirec
 % hold on
 % quiver3(x,y,z,VmainDirection(1,:)',VmainDirection(2,:)',VmainDirection(3,:)','linewidth',1,'color','r');    hold on;
 hold on;
-plotmesh(cfg.node,cfg.elem(indElem,:),'facealpha',0.3);  hold on;plotmesh(cfg.elem_centroide(indElem,:),'k.')
+% plotmesh(cfg.node,cfg.elem(indElem,:),'facealpha',0.3);
+if  cfg.plotMesh == 1
+    shg; rotate3d on;
+    if size(cfg.elem,2) == 9
+        % convert to tetra
+        [tetraElem,tetraNode,tetraLabel] = hex2tet(double(cfg.elem(:,1:end-1)), cfg.node, double(cfg.elem(:,end)), 3);
+    else
+        % hold on; plotmesh(cfg.node,cfg.elem(indElem,:),'facealpha',0.2); % hold on;plotmesh(cfg.elem_centroide(indElem,:),'k.')
+        tetraElem = cfg.elem(:,1:end-1);
+        tetraNode = cfg.node;
+        tetraLabel = cfg.elem(:,end);
+    end
+end    
+    hold on; bst_plotmesh(tetraNode,[tetraElem, tetraLabel],'x>50','facealpha',0.2);
+
+hold on;plotmesh(cfg.elem_centroide(indElem,:),'k.')
 
 
 [cx, cy, cz] = meshgrid([-1 0 1]);
