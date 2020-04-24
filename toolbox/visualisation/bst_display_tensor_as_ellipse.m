@@ -29,30 +29,47 @@ end
 
 figure
 for i = 1:length(indElem)
+    
+    
+    if cfg.elem(i,5) == 3
+        if isfield(cfg,'noCsf')
+            if cfg.noCsf == 1
+                continue
+            end
+        end
+    end
+    
+     if cfg.elem(i,end) ~= 1
+     xxc = 1;
+     end
     % position
     xc = cfg.elem_centroide(indElem(i),1);
     yc = cfg.elem_centroide(indElem(i),2);
     zc = cfg.elem_centroide(indElem(i),3);
     
+    disp(['tissues ' num2str(cfg.elem(i,end))])
+    
     if isfield(cfg,'eigen')
         v = cfg.eigen.eigen_vector{ indElem(i)} ;
 %          l = 300*cfg.eigen.eigen_value{ indElem(i)} ;
-         l = cfg.eigen.eigen_value{ indElem(i)} ;
-
+         l = cfg.eigen.eigen_value{ indElem(i)};
+     [i max(l)  ]
     else
         % extract eigen vector and value
-%         [v,l]=eig(abs(cfg.conductivity_tensor3x3(:,:, indElem(i))));
-        [v,l]=eig((cfg.conductivity_tensor3x3(:,:, indElem(i))));
-        
+%          [v,l]=eig(abs(cfg.conductivity_tensor3x3(:,:, indElem(i))));
+         [v,l]=eig((cfg.conductivity_tensor3x3(:,:, indElem(i))));
+         if ~isreal(v)
+             v = [1 0 0; 0 1 0; 0 0 1];
+             l = 1.0e-03 *[1 0 0; 0 1 0; 0 0 1];
+         end
     end
     %% maybe to avoid the complex number !!
     %     v = real(v);
     %     l = real(l);
     if cfg.ellipse == 1
-        hold on
-        
+        hold on        
         meshResolution = 10;
-        factor = 1;
+        factor = 5;
         [X,Y,Z] = ellipsoid(0,0,0,factor*norm(l(1,1)),factor*norm(l(2,2)),factor*norm(l(3,3)),meshResolution);
         % figure; surf(X,Y,Z); xlabel('X'); ylabel('Y'); zlabel('Z');
         sz=size(X);
@@ -64,6 +81,7 @@ for i = 1:length(indElem)
             end
         end
         X=X+xc; Y=Y+yc; Z=Z+zc;
+        [i cfg.elem(i,end)]
         h=surf(X,Y,Z);
     end
     
@@ -81,7 +99,7 @@ end
 
 if cfg.ellipse == 1
     shading interp
-    colormap([0.8 0.8 0.8])
+%     colormap([0.8 0.8 0.8])
     lighting phong
     light('Position',[0 0 1],'Style','infinite','Color',[ 1.000 0.584 0.000]);
 end
@@ -101,11 +119,13 @@ if  cfg.plotMesh == 1
         tetraLabel = cfg.elem(:,end);
     end
     
-    hold on; plotmesh(tetraNode,[tetraElem, tetraLabel],'facealpha',0.1,'edgecolor','none','facecolor',[0.9 0.9 0.9]); 
+%     hold on; plotmesh(tetraNode,[tetraElem, tetraLabel],'y>0','facealpha',0.1,'edgecolor','none','facecolor',[0.9 0.9 0.9]); 
+    hold on; plotmesh(tetraNode,[tetraElem, tetraLabel],'y>0','facealpha',0.3,'edgecolor','none'); 
     view([90 0 0])
     % hold on;plotmesh(cfg.elem_centroide(indElem,:),'k.')
     %     hold on; plotmesh(tetraNode,[tetraElem, tetraLabel],'x>50'); % hold on;plotmesh(cfg.elem_centroide(indElem,:),'k.')
     
 end
+axis equal
 
 end

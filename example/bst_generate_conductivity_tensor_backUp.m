@@ -211,18 +211,38 @@ else
     bst_error(['Tetrahedron element are not supported for now.' 10 'Check the Matlab command window for additional information.' 10], 'Generate FEM tensor', 0);
 end
 
+
+
+%% SECTION 2 : Convert DWI to Conductivity 
+% Compute the tensor for the whole model
+%% Build the tensor for the isotropic tissues
+cfg = [];
+default_iso_conductivity = get_standard_conductivity((numberOfLayer));
+cfg.elem = [femHead.Elements femHead.Tissue];
+cfg.node = femHead.Vertices;
+cfg.conductivity = default_iso_conductivity;
+cfg = bst_generate_tensor_on_elem(cfg);
+% Tensors 
+IsotropicTensor = cfg.eigen;
+
+% Display the tensors 
+cfg.indElem = 1:10000:length(cfg.elem);
+cfg.ellipse = 1;
+cfg.arrow = 0;
+bst_display_tensor_as_ellipse(cfg)
+view([90 0 0])
+
+
+%% Assigne anisotropy ===> convert from DTI to conductivity 
+% This maybe done during the process of FEM computation since the value of
+% the conductivity may change according to the users...Discuss with  ftadel
 %% Call the mapping from voxel to mesh and coordinates changes
 [V1rot,V2rot,V3rot, L1a, L2a, L3a ] = convert3Dtensors(sMriMask, femHead, DTI);
 % the output of this function is the eigen value and vector interpolated to
 % the centroide of each fem element and the vector are reoriented to the
 % SCS coordinate system
-
-%% Assigne conductivity ===> convert from DTI to conductivity 
-% This maybe done during the process of FEM computation since the value of
-% the conductivity may change according to the users...Discuss with  ftadel
-
 aniso_conductivity= [];
-iso_conductivity = 0.33;  % get this valu from the input
+iso_conductivity = default_iso_conductivity(1);  % get this valu from the input
 fail = [];
 for ind = 1 : length(V1rot)
     L=diag([L1a(ind), L2a(ind), L3a(ind)]);
@@ -231,10 +251,24 @@ for ind = 1 : length(V1rot)
     if sum(sum(L)) == 0 % useful in the case where BDP fails or it's not part of the mask
         fail = [fail ind];
         aniso_conductivity(:,:,ind) = diag([iso_conductivity,iso_conductivity,iso_conductivity]);
+        eigen.eigen_vector{ind} = [1 0 0;0 1 0; 0 0 1];
+        eigen.eigen_value{ind} = diag([iso_conductivity,iso_conductivity,iso_conductivity]);
     else % apply the volume approcah
         aniso_conductivity(:,:,ind) = iso_conductivity * [(L1a(ind)*L2a(ind)*L3a(ind))^(-1/3)]*T;
+        eigen.eigen_vector{ind} = V;
+        eigen.eigen_value{ind} = L;
     end
 end
+
+% get the index of the iso and aniso
+wmAniso = ones(length(V1rot),1);
+wmAniso(fail) = 0;
+allTensorIndex = zeros(length(femHead.Tissue),1);
+allTensorIndex(femHead.Tissue ==1) = wmAniso; % 1 aniso, 0 iso
+
+size(allTensorIndex)
+size(femHead.Tissue )
+
 
 % check and display
 cfg.node = femHead.Vertices;
@@ -249,6 +283,14 @@ cfg.conductivity_tensor3x3 = aniso_conductivity/display_factor;
 bst_display_tensor_as_ellipse(cfg)
 view([0 90 0])
 
+
+
+
+
+% replace the isotropic conductivity by the computed values from DWI
+anisoIndex = find(allTensorIndex);
+cfg.eigen.eigen_value{anisoIndex} = ;
+length(x)
 %% --------------------------------------------------------------------------------------------------------
 %To be tested later
 if 0

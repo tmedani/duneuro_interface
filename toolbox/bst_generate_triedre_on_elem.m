@@ -61,7 +61,7 @@ if view ==1
     hold on; quiver3(elem_centroide(num_view,1),elem_centroide(num_view,2),elem_centroide(num_view,3),vector_norm_centroid(num_view,1),vector_norm_centroid(num_view,2),vector_norm_centroid(num_view,3))
     
     % check the view
-    num_view = 1000:2000;
+    num_view = 1500:1800;
     figure;plotmesh(cfg.node,cfg.elem(num_view,:),'facealpha',0.5);  hold on;plotmesh(elem_centroide(num_view,:),'rx')
     hold on; quiver3(elem_centroide(num_view,1),elem_centroide(num_view,2),elem_centroide(num_view,3),vector_norm_centroid(num_view,1),vector_norm_centroid(num_view,2),vector_norm_centroid(num_view,3))
     hold on; quiver3(elem_centroide(num_view,1),elem_centroide(num_view,2),elem_centroide(num_view,3),vector_norm_centroid_t1(num_view,1),vector_norm_centroid_t1(num_view,2),vector_norm_centroid_t1(num_view,3))
