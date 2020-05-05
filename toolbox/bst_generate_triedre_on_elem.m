@@ -31,7 +31,7 @@ end
 cfg.elem_centroide = elem_centroide;
 cfg.vector_norm_centroid = vector_norm_centroid;
 cfg.vector_norm_centroid_t1 = vector_norm_centroid_t1;
-cfg.vector_norm_centroid_t2 = vector_norm_centroid_t2; 
+cfg.vector_norm_centroid_t2 = vector_norm_centroid_t2;
 
 %% Checking ... not activated
 view = 0; check = 0;
@@ -66,12 +66,6 @@ if view ==1
     hold on; quiver3(elem_centroide(num_view,1),elem_centroide(num_view,2),elem_centroide(num_view,3),vector_norm_centroid(num_view,1),vector_norm_centroid(num_view,2),vector_norm_centroid(num_view,3))
     hold on; quiver3(elem_centroide(num_view,1),elem_centroide(num_view,2),elem_centroide(num_view,3),vector_norm_centroid_t1(num_view,1),vector_norm_centroid_t1(num_view,2),vector_norm_centroid_t1(num_view,3))
     hold on; quiver3(elem_centroide(num_view,1),elem_centroide(num_view,2),elem_centroide(num_view,3),vector_norm_centroid_t2(num_view,1),vector_norm_centroid_t2(num_view,2),vector_norm_centroid_t2(num_view,3))
-    legend('elem','centr','Vr','Vt1','Vt2');    
+    legend('elem','centr','Vr','Vt1','Vt2');
 end
 end
-
-%
-% [eigenvectors,l]=eig(cfg.conductivity_tensor3x3)
-% cfg.vector_norm_centroid(1,:)
-% cfg.vector_norm_centroid_t1(1,:)
-% cfg.vector_norm_centroid_t2(1,:)

@@ -43,8 +43,6 @@ end
 %% Compute the basis vector on each elem
 cfg =  bst_generate_triedre_on_elem(cfg);
 
-
-
 %% Transformation matrix  and tensor mapping on each direction
 tensor = zeros(length(cfg.elem),6) ;
 conductivity_tensor3x3 = zeros(3,3,length(cfg.elem)) ;
@@ -55,14 +53,10 @@ for ind =1 : length(cfg.elem)
     
     temp = T1 * A(:,:,cfg.elem(ind,5)) * T1';
     tensor(ind,:) = [temp(1) temp(5) temp(9) temp(4) temp(7) temp(8)];
-    conductivity_tensor3x3(:,:,ind) = (temp);
-    temp;
+    conductivity_tensor3x3(:,:,ind) = (temp);   
     
-
-        cfg.eigen.eigen_vector{ind} = T1;
-        cfg.eigen.eigen_value{ind} = A(:,:,cfg.elem(ind,5));
-
-    
+    cfg.eigen.eigen_vector{ind} = T1;
+    cfg.eigen.eigen_value{ind} = A(:,:,cfg.elem(ind,5));    
 end
 cfg.conductivity_tensor = tensor;
 cfg.conductivity_tensor3x3 = conductivity_tensor3x3;
