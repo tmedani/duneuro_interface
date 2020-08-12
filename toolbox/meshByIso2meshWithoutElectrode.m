@@ -105,18 +105,19 @@ if 0
 end
 
 node(:,1:3) = node(:,1:3) + 0.5; % then voxel space
-figure;plotmesh(node(:,1:3),elem)
+% figure;plotmesh(node(:,1:3),elem)
 if ~isempty(hdrInfo)
     for i=1:3, node(:,i) = node(:,i)*hdrInfo.pixdim(i); end
 end
 
-figure;
-%allMaskd=double(allMask);
-h=slice(double(allMask),[],[120],[120 180]);
-set(h,'linestyle','none')
-hold on
-plotmesh(node(:,[2 1 3]),face,'facealpha',0.7);
-
+if 0
+    figure;
+    %allMaskd=double(allMask);
+    h=slice(double(allMask),[],[120],[120 180]);
+    set(h,'linestyle','none')
+    hold on
+    plotmesh(node(:,[2 1 3]),face,'facealpha',0.7);
+end
 % Put mesh coordinates into pseudo-world space (voxel space but scaled properly
 % using the scaling factors in the header) to avoid mistakes in
 % solving. Putting coordinates into pure-world coordinates causes other
@@ -135,16 +136,16 @@ plotmesh(node(:,[2 1 3]),face,'facealpha',0.7);
 %     title(maskName{i})
 %     pause
 % end
-disp('======================================================')
-disp('     STEP 3bis : SAVE THE MESH ...       ')
-disp('======================================================')
-if opt.saveMeshFormatMat == 1;
-    disp('saving mesh mat fomat...')
-    save([dirname filesep baseFilename '_' uniTag '.mat'],'node','elem','face','allMask');
-end
-if opt.saveMeshFormatMsh == 1;
-    disp('saving mesh msh fomat...')
-    maskName(1:numOfTissue) = {'WHITE','GRAY','CSF','BONE','SKIN','AIR'};
-    savemsh(node(:,1:3),elem,[dirname filesep baseFilename '_' uniTag '.msh'],maskName);
-end
+% disp('======================================================')
+% disp('     STEP 3bis : SAVE THE MESH ...       ')
+% disp('======================================================')
+% if opt.saveMeshFormatMat == 1;
+%     disp('saving mesh mat fomat...')
+%     save([dirname filesep baseFilename '_' uniTag '.mat'],'node','elem','face','allMask');
+% end
+% if opt.saveMeshFormatMsh == 1;
+%     disp('saving mesh msh fomat...')
+%     maskName(1:numOfTissue) = {'WHITE','GRAY','CSF','BONE','SKIN','AIR'};
+%     savemsh(node(:,1:3),elem,[dirname filesep baseFilename '_' uniTag '.msh'],maskName);
+% end
 end
